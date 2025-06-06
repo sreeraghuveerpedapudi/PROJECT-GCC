@@ -41,10 +41,12 @@ void main(void)
     return;
 }
 
-/* 
+/* Output :----------
+
 NIBBLESWAP : BABABABA
 NIBBLESWAP : BABA
 NIBBLESWAP : BA
 Count Set Bits : 04
 Count Clr Bits : 28 
-*/
+
+------------------ */
