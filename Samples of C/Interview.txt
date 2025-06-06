@@ -1,0 +1,18 @@
+clock stretching in i2c
+why do we need parity in uart communication
+https://thedummyproject.wordpress.com/wp-content/uploads/2013/06/crack-the-interviews.pdf
+
+// Online C compiler to run C program online
+//Write a program to swap the even and odd nibbles of a 32-bit integer using bitwise operations.
+// num =    0xABABABAB
+//Return = 0xBABABABA
+//int x = 0x2C00012C
+// Write a program to duplicate elements in an array.
+//Input: a[8] = {2, 4, 0, 1};
+//Output: a[8] = {2, 2, 4, 4, 0, 0, 1, 1};
+//Array has N/2 elements filled . Duplicate each element in array without using additional storage.
+//Size of array = N
+// Using only a Four-minute hourglass and a seven-minute hourglass/sandglass,
+//How will you measure exactly nine minutes?
+ 
+//Restriction:- Without the process taking longer than nine minutes
