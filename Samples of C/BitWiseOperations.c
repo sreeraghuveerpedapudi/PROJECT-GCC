@@ -46,3 +46,15 @@ void main(void)
     
     return;
 }
+
+/* ------OUTPUT------
+
+NIBBLESWAP : 21436587
+NIBBLESWAP : 2143
+NIBBLESWAP : 21
+ENDIANSWAP : 3412
+ENDIANSWAP : 78563412
+Count Set Bits : 02
+Count Clr Bits : 30
+
+------OUTPUT------ */
