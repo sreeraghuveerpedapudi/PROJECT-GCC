@@ -64,9 +64,13 @@ void Pop(uint32_t Data)
     }
     else
     {
-        //printf("Temp:%d ", Temp);
-        //printf("Node:%d ", Temp->Data);
-        //printf("Temp->Next:%d\n", Temp->Next);
+        if(Temp->Data == Data)
+        {
+            HEAD = Temp->Next;
+            free(Temp);
+            Temp->Next = NULL;
+        }
+        
         Prev = Temp;
         Temp = Temp->Next;
         
@@ -74,20 +78,14 @@ void Pop(uint32_t Data)
         {
             if(Temp->Data == Data)
             {
-                //printf("Temp->Data:%d ", Temp->Data);
-                //printf("Temp->Next:%d\n", Temp->Next);
-                Prev = Temp;
                 Prev->Next = Temp->Next;
                 free(Temp);
                 Temp->Next = NULL;
-                //printf("Prev->Data:%d ", Prev->Data);
-                //printf("Prev->Next:%d\n", Prev->Next);
+                Prev = Temp;
+                Temp = Temp->Next;
             }
             else
             {
-                //printf("Temp:%d ", Temp);
-                //printf("Node:%d ", Temp->Data);
-                //printf("Temp->Next:%d\n", Temp->Next);
                 Prev = Temp;
                 Temp = Temp->Next;
             }
@@ -134,8 +132,7 @@ void main(void)
     Add(2);
     Add(3);
     Dis(0);
-    Pop(3);
+    Pop(1);
     Dis(0);
-    
     return;
 }
