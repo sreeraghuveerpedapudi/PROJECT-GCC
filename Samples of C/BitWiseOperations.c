@@ -2,8 +2,11 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define NIBBLESWAP(X) (X>>4|X<<4)
-#define ENDIANSWAP(X) (X>>4|X<<4)
+#define NIBBLESWAP32(X) (X>>4&0x0F0F0F0F|X<<4&0xF0F0F0F0)
+#define NIBBLESWAP16(X) (X>>4&0x0F0F|X<<4&0xF0F0)
+#define NIBBLESWAP08(X) (X>>4&0x0F|X<<4&0xF0)
+#define ENDIANSWAP16(X) (X>>8&0x00FF|X<<8&0xFF00)
+#define ENDIANSWAP32(X) (X>>24&0x000000FF|X>>8&0x0000FF00|X<<8&0x00FF0000|X<<24&0xFF000000)
 
 #define TABLE_LENGTH 256
 uint8_t LookUpTable[256];
@@ -29,24 +32,17 @@ uint32_t CountSetBits(uint32_t Data)
 
 void main(void)
 {
-    printf("NIBBLESWAP : %X\n", (uint32_t)NIBBLESWAP(0xABABABAB));
-    printf("NIBBLESWAP : %X\n", (uint16_t)NIBBLESWAP(0xABAB));
-    printf("NIBBLESWAP : %X\n", (uint8_t)NIBBLESWAP(0xAB));
+    printf("NIBBLESWAP : %X\n", NIBBLESWAP32(0x12345678U));
+    printf("NIBBLESWAP : %X\n", NIBBLESWAP16(0x1234));
+    printf("NIBBLESWAP : %X\n", NIBBLESWAP08(0x12));
+    
+    printf("ENDIANSWAP : %X\n", ENDIANSWAP16(0x1234));
+    printf("ENDIANSWAP : %X\n", ENDIANSWAP32(0x12345678U));
     
     LookUpTableInit();
-    uint32_t Data = 0xF;
+    uint32_t Data = 0x3;
     printf("Count Set Bits : %02d\n", CountSetBits(Data));
     printf("Count Clr Bits : %02d\n", sizeof(uint32_t)*8-CountSetBits(Data));
     
     return;
 }
-
-/* Output :----------
-
-NIBBLESWAP : BABABABA
-NIBBLESWAP : BABA
-NIBBLESWAP : BA
-Count Set Bits : 04
-Count Clr Bits : 28 
-
------------------- */
