@@ -45,7 +45,7 @@ void Add(uint32_t Data)
     return;
 }
 
-void Pop(uint32_t Data)
+void Del(uint32_t Data)
 {
     sNODE *Temp = HEAD;
     sNODE *Prev = HEAD;
@@ -60,6 +60,7 @@ void Pop(uint32_t Data)
         {
             HEAD = NULL;
             free(Temp);
+            Temp->Next = NULL;
         }
     }
     else
@@ -69,20 +70,29 @@ void Pop(uint32_t Data)
             HEAD = Temp->Next;
             free(Temp);
             Temp->Next = NULL;
+            Temp = HEAD;
+            Prev = HEAD;
         }
-        
-        Prev = Temp;
-        Temp = Temp->Next;
-        
+        else
+        {
+            Prev = Temp;
+            Temp = Temp->Next;
+        }
         while(Temp != NULL)
         {
             if(Temp->Data == Data)
             {
+                if(Prev == HEAD && Temp->Next == NULL)
+                {
+                    HEAD = NULL;
+                }
                 Prev->Next = Temp->Next;
+                
                 free(Temp);
                 Temp->Next = NULL;
-                Prev = Temp;
-                Temp = Temp->Next;
+                Temp = Prev->Next;
+                
+                
             }
             else
             {
@@ -116,6 +126,7 @@ void Dis(uint32_t Data)
             printf("Temp->Next:%d\n", Temp->Next);
         }
     }
+    printf("\n");
     return;
 }
 
@@ -131,8 +142,15 @@ void main(void)
     Add(1);
     Add(2);
     Add(3);
+    Add(1);
+    Add(2);
+    Add(3);
     Dis(0);
-    Pop(1);
+    Del(2);
+    Dis(0);
+    Del(3);
+    Dis(0);
+    Del(1);
     Dis(0);
     return;
 }
