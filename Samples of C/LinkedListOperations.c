@@ -71,7 +71,7 @@ void Del(uint32_t Data)
             free(Temp);
             Temp->Next = NULL;
             Temp = HEAD;
-            Prev = HEAD;
+            Prev = NULL;
         }
         else
         {
@@ -85,14 +85,13 @@ void Del(uint32_t Data)
                 if(Prev == HEAD && Temp->Next == NULL)
                 {
                     HEAD = NULL;
+                    Prev = Temp->Next;
                 }
                 Prev->Next = Temp->Next;
                 
                 free(Temp);
                 Temp->Next = NULL;
                 Temp = Prev->Next;
-                
-                
             }
             else
             {
@@ -114,16 +113,12 @@ void Dis(uint32_t Data)
     }
     else
     {
-        printf("Node:%d ", Temp->Data);
-        printf("Temp:%d ", Temp);
-        printf("Temp->Next:%d\n", Temp->Next);
-        
-        while(Temp->Next!=NULL)
+        while(Temp!=NULL)
         {
-            Temp = Temp->Next;
             printf("Node:%d ", Temp->Data);
             printf("Temp:%d ", Temp);
             printf("Temp->Next:%d\n", Temp->Next);
+            Temp = Temp->Next;
         }
     }
     printf("\n");
@@ -140,17 +135,17 @@ void Rev(sNODE *Node)
 void main(void)
 {
     Add(1);
-    Add(2);
-    Add(3);
     Add(1);
     Add(2);
+    Add(2);
     Add(3);
-    Dis(0);
-    Del(2);
-    Dis(0);
-    Del(3);
+    Add(3);
     Dis(0);
     Del(1);
     Dis(0);
+    //Del(2);
+    //Dis(0);
+    //Del(3);
+    //Dis(0);
     return;
 }
