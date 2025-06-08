@@ -24,6 +24,13 @@ sNODE *TAIL = NULL;
 /* Linked List Functions */
 void Dis(uint32_t Data);
 void Add(uint32_t Data);
+void Del(uint32_t Data);
+void Rev(uint32_t Data);
+
+void Rev(uint32_t Data)
+{
+    return;
+}
 
 void Del(uint32_t Data)
 {
@@ -80,11 +87,6 @@ void Del(uint32_t Data)
             }
         }
     }
-    return;
-}
-
-void Rev(sNODE *Node)
-{
     return;
 }
 
