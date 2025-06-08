@@ -22,28 +22,8 @@ sNODE *HEAD = NULL;
 sNODE *TAIL = NULL;
 
 /* Linked List Functions */
-
-void Add(uint32_t Data)
-{
-    sNODE *Temp;
-    Temp = malloc(sizeof(sNODE));
-    Temp->Data = Data;
-    
-    if(HEAD==NULL)
-    {
-        HEAD = Temp;
-        TAIL = Temp;
-        HEAD->Next = NULL;
-        TAIL->Next = NULL;
-    }
-    else
-    {
-        TAIL->Next = Temp;
-        TAIL = Temp;
-        TAIL->Next = NULL;
-    }
-    return;
-}
+void Dis(uint32_t Data);
+void Add(uint32_t Data);
 
 void Del(uint32_t Data)
 {
@@ -103,6 +83,31 @@ void Del(uint32_t Data)
     return;
 }
 
+void Rev(sNODE *Node)
+{
+    return;
+}
+
+/* Main Function */
+
+void main(void)
+{
+    Add(1);
+    Add(1);
+    Add(2);
+    Add(2);
+    Add(3);
+    Add(3);
+    Dis(0);
+    Del(1);
+    Dis(0);
+    Del(2);
+    Dis(0);
+    Del(3);
+    Dis(0);
+    return;
+}
+
 void Dis(uint32_t Data)
 {
     sNODE *Temp = HEAD;
@@ -125,27 +130,24 @@ void Dis(uint32_t Data)
     return;
 }
 
-void Rev(sNODE *Node)
+void Add(uint32_t Data)
 {
-    return;
-}
-
-/* Main Function */
-
-void main(void)
-{
-    Add(1);
-    Add(1);
-    Add(2);
-    Add(2);
-    Add(3);
-    Add(3);
-    Dis(0);
-    Del(1);
-    Dis(0);
-    //Del(2);
-    //Dis(0);
-    //Del(3);
-    //Dis(0);
+    sNODE *Temp;
+    Temp = malloc(sizeof(sNODE));
+    Temp->Data = Data;
+    
+    if(HEAD==NULL)
+    {
+        HEAD = Temp;
+        TAIL = Temp;
+        HEAD->Next = NULL;
+        TAIL->Next = NULL;
+    }
+    else
+    {
+        TAIL->Next = Temp;
+        TAIL = Temp;
+        TAIL->Next = NULL;
+    }
     return;
 }
