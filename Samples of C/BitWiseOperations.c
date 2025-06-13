@@ -7,6 +7,8 @@
 #define CLRBITSETBIT(X, CLR, SET) ((X & ~CLR) | SET)
 #define CLRREGISBITS(X, CLR) (X & ~CLR)
 #define SETREGISBITS(X, SET) (X | SET)
+#define CLRAREGISBIT(X, BIT) (~(1<<BIT) & X)
+#define SETAREGISBIT(X, BIT) ( (1<<BIT) | X)
 #define NIBBLESWAP32(X) (X>>4&0x0F0F0F0F|X<<4&0xF0F0F0F0)
 #define NIBBLESWAP16(X) (X>>4&0x0F0F|X<<4&0xF0F0)
 #define NIBBLESWAP08(X) (X>>4&0x0F|X<<4&0xF0)
@@ -54,6 +56,9 @@ void main(void)
     printf("\n");
     printf("CLRREGISBITS : 0x%08X\n", CLRREGISBITS(0xFFFF0000, 0xFFFF0000));
     printf("SETREGISBITS : 0x%08X\n", SETREGISBITS(0xFFFF0000, 0x0000FFFF));
+    printf("\n");
+    printf("CLRAREGISBIT : 0x%08X\n", CLRAREGISBIT(0xFFFF, 3));
+    printf("SETAREGISBIT : 0x%08X\n", SETAREGISBIT(0xFFF7, 3));
     return;
 }
 
@@ -74,5 +79,8 @@ COUNTCLRBITS : 0x1E
 
 CLRREGISBITS : 0x00000000
 SETREGISBITS : 0xFFFFFFFF
+
+CLRAREGISBIT : 0x0000FFF7
+SETAREGISBIT : 0x0000FFFF
 
 ------OUTPUT------ */
