@@ -5,17 +5,21 @@
 #include <stdio.h>
 
 #define CLRBITSETBIT(X, CLR, SET) ((X & ~CLR) | SET)
-#define CLRREGISBITS(X, CLR) (X & ~CLR)
-#define SETREGISBITS(X, SET) (X | SET)
-#define TOGREGISBITS(X, TOG) (X ^ TOG)
-#define CLRAREGISBIT(X, BIT) (~(1<<BIT) & X)
-#define SETAREGISBIT(X, BIT) ( (1<<BIT) | X)
-#define TOGAREGISBIT(X, BIT) ( (1<<BIT) ^ X)
+
 #define NIBBLESWAP32(X) (X>>4&0x0F0F0F0F|X<<4&0xF0F0F0F0)
 #define NIBBLESWAP16(X) (X>>4&0x0F0F|X<<4&0xF0F0)
 #define NIBBLESWAP08(X) (X>>4&0x0F|X<<4&0xF0)
+
 #define ENDIANSWAP16(X) (X>>8&0x00FF|X<<8&0xFF00)
 #define ENDIANSWAP32(X) (X>>24&0x000000FF|X>>8&0x0000FF00|X<<8&0x00FF0000|X<<24&0xFF000000)
+
+#define CLRREGISBITS(X, CLR) (X & ~CLR)
+#define SETREGISBITS(X, SET) (X | SET)
+#define TOGREGISBITS(X, TOG) (X ^ TOG)
+
+#define CLRAREGISBIT(X, BIT) (~(1<<BIT) & X)
+#define SETAREGISBIT(X, BIT) ( (1<<BIT) | X)
+#define TOGAREGISBIT(X, BIT) ( (1<<BIT) ^ X)
 
 #define TABLE_LENGTH 256
 uint8_t LookUpTable[256];
@@ -52,7 +56,7 @@ void main(void)
     printf("ENDIANSWAP32 : 0x%08X\n", ENDIANSWAP32(0x12345678U));
     printf("\n");
     LookUpTableInit();
-    uint32_t Data = 0x3;
+    uint32_t Data = 0x00A5A500;
     printf("COUNTSETBITS : 0x%02X\n", CountSetBits(Data));
     printf("COUNTCLRBITS : 0x%02X\n", sizeof(uint32_t)*8-CountSetBits(Data));
     printf("\n");
@@ -78,8 +82,8 @@ NIBBLESWAP08 : 0x21
 ENDIANSWAP16 : 0x3412
 ENDIANSWAP32 : 0x78563412
 
-COUNTSETBITS : 0x02
-COUNTCLRBITS : 0x1E
+COUNTSETBITS : 0x08
+COUNTCLRBITS : 0x18
 
 CLRREGISBITS : 0x00000000
 SETREGISBITS : 0xFFFFFFFF
