@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define CLRANDSETREG(X, Y, Z) ((X & ~Y) | Z)
+#define CLRANDSETREG(X, CLR, SET) ((X & ~CLR) | SET)
 #define NIBBLESWAP32(X) (X>>4&0x0F0F0F0F|X<<4&0xF0F0F0F0)
 #define NIBBLESWAP16(X) (X>>4&0x0F0F|X<<4&0xF0F0)
 #define NIBBLESWAP08(X) (X>>4&0x0F|X<<4&0xF0)
