@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#define MODIFY_REG(REG, CLEARMASK, SETMASK) ((REG & ~(CLEARMASK)) | (SETMASK))
 #define NIBBLESWAP32(X) (X>>4&0x0F0F0F0F|X<<4&0xF0F0F0F0)
 #define NIBBLESWAP16(X) (X>>4&0x0F0F|X<<4&0xF0F0)
 #define NIBBLESWAP08(X) (X>>4&0x0F|X<<4&0xF0)
@@ -32,6 +33,8 @@ uint32_t CountSetBits(uint32_t Data)
 
 void main(void)
 {
+    printf("SET AND CLEAR BITS OF A REGISTER : %X\n", MODIFY_REG(0xFFFF0000, 0xFFFF0000, 0x0000FFFF));
+    
     printf("NIBBLESWAP : %X\n", NIBBLESWAP32(0x12345678U));
     printf("NIBBLESWAP : %X\n", NIBBLESWAP16(0x1234));
     printf("NIBBLESWAP : %X\n", NIBBLESWAP08(0x12));
