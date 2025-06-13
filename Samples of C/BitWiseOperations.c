@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define MODIFY_REG(REG, CLEARMASK, SETMASK) ((REG & ~(CLEARMASK)) | (SETMASK))
+#define CLRANDSETREG(X, Y, Z) ((X & ~Y) | Z)
 #define NIBBLESWAP32(X) (X>>4&0x0F0F0F0F|X<<4&0xF0F0F0F0)
 #define NIBBLESWAP16(X) (X>>4&0x0F0F|X<<4&0xF0F0)
 #define NIBBLESWAP08(X) (X>>4&0x0F|X<<4&0xF0)
@@ -33,14 +33,14 @@ uint32_t CountSetBits(uint32_t Data)
 
 void main(void)
 {
-    printf("SET AND CLEAR BITS OF A REGISTER : %X\n", MODIFY_REG(0xFFFF0000, 0xFFFF0000, 0x0000FFFF));
+    printf("CLRANDSETREG : %X\n", CLRANDSETREG(0xFFFF0000, 0xFFFF0000, 0x0000FFFF));
     
-    printf("NIBBLESWAP : %X\n", NIBBLESWAP32(0x12345678U));
-    printf("NIBBLESWAP : %X\n", NIBBLESWAP16(0x1234));
-    printf("NIBBLESWAP : %X\n", NIBBLESWAP08(0x12));
+    printf("NIBBLESWAP32 : %X\n", NIBBLESWAP32(0x12345678U));
+    printf("NIBBLESWAP16 : %X\n", NIBBLESWAP16(0x1234));
+    printf("NIBBLESWAP08 : %X\n", NIBBLESWAP08(0x12));
     
-    printf("ENDIANSWAP : %X\n", ENDIANSWAP16(0x1234));
-    printf("ENDIANSWAP : %X\n", ENDIANSWAP32(0x12345678U));
+    printf("ENDIANSWAP16 : %X\n", ENDIANSWAP16(0x1234));
+    printf("ENDIANSWAP32 : %X\n", ENDIANSWAP32(0x12345678U));
     
     LookUpTableInit();
     uint32_t Data = 0x3;
@@ -52,11 +52,12 @@ void main(void)
 
 /* ------OUTPUT------
 
-NIBBLESWAP : 21436587
-NIBBLESWAP : 2143
-NIBBLESWAP : 21
-ENDIANSWAP : 3412
-ENDIANSWAP : 78563412
+CLRANDSETREG : FFFF
+NIBBLESWAP32 : 21436587
+NIBBLESWAP16 : 2143
+NIBBLESWAP08 : 21
+ENDIANSWAP16 : 3412
+ENDIANSWAP32 : 78563412
 Count Set Bits : 02
 Count Clr Bits : 30
 
