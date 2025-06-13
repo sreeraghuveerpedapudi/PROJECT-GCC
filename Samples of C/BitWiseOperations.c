@@ -35,32 +35,35 @@ uint32_t CountSetBits(uint32_t Data)
 
 void main(void)
 {
-    printf("CLRBITSETBIT : %X\n", CLRBITSETBIT(0xFFFF0000, 0xFFFF0000, 0x0000FFFF));
-    
-    printf("NIBBLESWAP32 : %X\n", NIBBLESWAP32(0x12345678U));
-    printf("NIBBLESWAP16 : %X\n", NIBBLESWAP16(0x1234));
-    printf("NIBBLESWAP08 : %X\n", NIBBLESWAP08(0x12));
-    
-    printf("ENDIANSWAP16 : %X\n", ENDIANSWAP16(0x1234));
-    printf("ENDIANSWAP32 : %X\n", ENDIANSWAP32(0x12345678U));
-    
+    printf("CLRBITSETBIT : 0x%08X\n", CLRBITSETBIT(0xFFFF0000, 0xFFFF0000, 0x0000FFFF));
+    printf("\n");
+    printf("NIBBLESWAP32 : 0x%08X\n", NIBBLESWAP32(0x12345678U));
+    printf("NIBBLESWAP16 : 0x%04X\n", NIBBLESWAP16(0x1234));
+    printf("NIBBLESWAP08 : 0x%02X\n", NIBBLESWAP08(0x12));
+    printf("\n");
+    printf("ENDIANSWAP16 : 0x%04X\n", ENDIANSWAP16(0x1234));
+    printf("ENDIANSWAP32 : 0x%08X\n", ENDIANSWAP32(0x12345678U));
+    printf("\n");
     LookUpTableInit();
     uint32_t Data = 0x3;
-    printf("Count Set Bits : %02d\n", CountSetBits(Data));
-    printf("Count Clr Bits : %02d\n", sizeof(uint32_t)*8-CountSetBits(Data));
+    printf("COUNTSETBITS : 0x%02X\n", CountSetBits(Data));
+    printf("COUNTCLRBITS : 0x%02X\n", sizeof(uint32_t)*8-CountSetBits(Data));
     
     return;
 }
 
 /* ------OUTPUT------
 
-CLRBITSETBIT : FFFF
-NIBBLESWAP32 : 21436587
-NIBBLESWAP16 : 2143
-NIBBLESWAP08 : 21
-ENDIANSWAP16 : 3412
-ENDIANSWAP32 : 78563412
-Count Set Bits : 02
-Count Clr Bits : 30
+CLRBITSETBIT : 0x0000FFFF
+
+NIBBLESWAP32 : 0x21436587
+NIBBLESWAP16 : 0x2143
+NIBBLESWAP08 : 0x21
+
+ENDIANSWAP16 : 0x3412
+ENDIANSWAP32 : 0x78563412
+
+COUNTSETBITS : 0x02
+COUNTCLRBITS : 0x1E
 
 ------OUTPUT------ */
