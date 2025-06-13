@@ -1,8 +1,10 @@
-// Online C compiler to run C program online
-#include <stdio.h>
-#include <stdint.h>
+/* Perform all types of Bit Wise Operations : */
+/* Clear Bit, Set Bit, Nibble Swap, Byte Swap */
 
-#define CLRANDSETREG(X, CLR, SET) ((X & ~CLR) | SET)
+#include <stdint.h>
+#include <stdio.h>
+
+#define CLRBITSETBIT(X, CLR, SET) ((X & ~CLR) | SET)
 #define NIBBLESWAP32(X) (X>>4&0x0F0F0F0F|X<<4&0xF0F0F0F0)
 #define NIBBLESWAP16(X) (X>>4&0x0F0F|X<<4&0xF0F0)
 #define NIBBLESWAP08(X) (X>>4&0x0F|X<<4&0xF0)
@@ -33,7 +35,7 @@ uint32_t CountSetBits(uint32_t Data)
 
 void main(void)
 {
-    printf("CLRANDSETREG : %X\n", CLRANDSETREG(0xFFFF0000, 0xFFFF0000, 0x0000FFFF));
+    printf("CLRBITSETBIT : %X\n", CLRBITSETBIT(0xFFFF0000, 0xFFFF0000, 0x0000FFFF));
     
     printf("NIBBLESWAP32 : %X\n", NIBBLESWAP32(0x12345678U));
     printf("NIBBLESWAP16 : %X\n", NIBBLESWAP16(0x1234));
@@ -52,7 +54,7 @@ void main(void)
 
 /* ------OUTPUT------
 
-CLRANDSETREG : FFFF
+CLRBITSETBIT : FFFF
 NIBBLESWAP32 : 21436587
 NIBBLESWAP16 : 2143
 NIBBLESWAP08 : 21
