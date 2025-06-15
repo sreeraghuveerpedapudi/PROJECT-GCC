@@ -19,17 +19,28 @@ struct node
 
 /* Global Variables */
 sNODE *HEAD = NULL;
+sNODE *indirect = NULL;
 sNODE *TAIL = NULL;
 
 /* Linked List Functions */
 void Dis(uint32_t Data);
 void Add(uint32_t Data);
 void Del(uint32_t Data);
-void Rev(uint32_t Data);
+void Rem(sNODE *entry);
 
-void Rev(uint32_t Data)
+void Rem(sNODE *entry)
 {
-    return;
+    // The "indirect" pointer points to the
+    // *address* of the thing we'll update
+    indirect = HEAD;
+    
+    // Walk the list, looking for the thing that
+    // points to the entry we want to remove
+    while (indirect != entry)
+    indirect = indirect->Next;
+    
+    // .. and just remove it
+    indirect = entry->Next;
 }
 
 void Del(uint32_t Data)
