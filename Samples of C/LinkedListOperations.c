@@ -30,21 +30,19 @@ void Rem(sNODE *entry);
 
 /* void Rev(void)
 {
-  sNODE *Temp = Head;
+  sNODE *Prev = NULL;
+  sNODE *Curr = Head;
+  sNODE *Next = NULL;
   // Head -- Node1 -- Node 2 -- Node 3 -- NULL
   
-  Prev = Temp;
-  Temp = Temp->Next;
-  Prev->Next = NULL;
-  Head = Temp;
-  
-  while(Temp!==NULL)
+  while(Curr!=NULL)
   {
-    Prev = Temp;
-    Temp = Temp->Next;
-    Prev->Next = Prev;
-    Head = Temp;
+    Next = Curr->Next;
+    Curr->Next = Prev;
+    Prev = Curr;
+    Curr = Next;
   }
+  Head = Prev;
   return;
 } */
 
