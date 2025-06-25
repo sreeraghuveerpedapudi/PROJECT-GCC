@@ -26,14 +26,14 @@ sNODE *TAIL = NULL;
 void Dis(uint32_t Data);
 void Add(uint32_t Data);
 void Del(uint32_t Data);
+void Rev(uint32_t Data);
 void Rem(sNODE *entry);
 
-/* void Rev(void)
+void Rev(uint32_t Data)
 {
   sNODE *Prev = NULL;
-  sNODE *Curr = Head;
+  sNODE *Curr = HEAD;
   sNODE *Next = NULL;
-  // Head -- Node1 -- Node 2 -- Node 3 -- NULL
   
   while(Curr!=NULL)
   {
@@ -42,9 +42,9 @@ void Rem(sNODE *entry);
     Prev = Curr;
     Curr = Next;
   }
-  Head = Prev;
+  HEAD = Prev;
   return;
-} */
+}
 
 void Rem(sNODE *entry)
 {
@@ -63,59 +63,30 @@ void Rem(sNODE *entry)
 
 void Del(uint32_t Data)
 {
-    sNODE *Temp = HEAD;
-    sNODE *Prev = HEAD;
+    sNODE *Curr = HEAD;
+    sNODE *Prev = NULL;
     
-    if(HEAD == NULL)
+    if(Curr!=NULL && Curr->Data == Data)
+    {
+        HEAD = Curr->Next;
+        free(Curr);
+        return;
+    }
+    
+    while(Curr!=NULL && Curr->Data != Data)
+    {
+        Prev = Curr;
+        Curr = Curr->Next;
+    }
+    
+    if(Curr == NULL)
     {
         printf("LINKED LIST IS EMPTY\n");
+        return;
     }
-    else if(Temp->Next == NULL)
-    {
-        if(Temp->Data == Data)
-        {
-            HEAD = NULL;
-            free(Temp);
-            Temp->Next = NULL;
-        }
-    }
-    else
-    {
-        if(Temp->Data == Data)
-        {
-            HEAD = Temp->Next;
-            free(Temp);
-            Temp->Next = NULL;
-            Temp = HEAD;
-            Prev = NULL;
-        }
-        else
-        {
-            Prev = Temp;
-            Temp = Temp->Next;
-        }
-        while(Temp != NULL)
-        {
-            if(Temp->Data == Data)
-            {
-                if(Prev == HEAD && Temp->Next == NULL)
-                {
-                    HEAD = NULL;
-                    Prev = Temp->Next;
-                }
-                Prev->Next = Temp->Next;
-                
-                free(Temp);
-                Temp->Next = NULL;
-                Temp = Prev->Next;
-            }
-            else
-            {
-                Prev = Temp;
-                Temp = Temp->Next;
-            }
-        }
-    }
+    
+    Prev->Next = Curr->Next;
+    free(Curr);
     return;
 }
 
