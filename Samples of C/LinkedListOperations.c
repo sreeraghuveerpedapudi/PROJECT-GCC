@@ -28,6 +28,26 @@ void Add(uint32_t Data);
 void Del(uint32_t Data);
 void Rem(sNODE *entry);
 
+/* void Rev(void)
+{
+  sNODE *Temp = Head;
+  // Head -- Node1 -- Node 2 -- Node 3 -- NULL
+  
+  Prev = Temp;
+  Temp = Temp->Next;
+  Prev->Next = NULL;
+  Head = Temp;
+  
+  while(Temp!==NULL)
+  {
+    Prev = Temp;
+    Temp = Temp->Next;
+    Prev->Next = Prev;
+    Head = Temp;
+  }
+  return;
+} */
+
 void Rem(sNODE *entry)
 {
     // The "indirect" pointer points to the
