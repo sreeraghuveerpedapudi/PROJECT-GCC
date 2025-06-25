@@ -29,23 +29,6 @@ void Del(uint32_t Data);
 void Rev(uint32_t Data);
 void Rem(sNODE *entry);
 
-void Rev(uint32_t Data)
-{
-  sNODE *Prev = NULL;
-  sNODE *Curr = HEAD;
-  sNODE *Next = NULL;
-  
-  while(Curr!=NULL)
-  {
-    Next = Curr->Next;
-    Curr->Next = Prev;
-    Prev = Curr;
-    Curr = Next;
-  }
-  HEAD = Prev;
-  return;
-}
-
 void Rem(sNODE *entry)
 {
     // The "indirect" pointer points to the
@@ -61,51 +44,26 @@ void Rem(sNODE *entry)
     indirect = entry->Next;
 }
 
-void Del(uint32_t Data)
-{
-    sNODE *Curr = HEAD;
-    sNODE *Prev = NULL;
-    
-    if(Curr!=NULL && Curr->Data == Data)
-    {
-        HEAD = Curr->Next;
-        free(Curr);
-        return;
-    }
-    
-    while(Curr!=NULL && Curr->Data != Data)
-    {
-        Prev = Curr;
-        Curr = Curr->Next;
-    }
-    
-    if(Curr == NULL)
-    {
-        printf("LINKED LIST IS EMPTY\n");
-        return;
-    }
-    
-    Prev->Next = Curr->Next;
-    free(Curr);
-    return;
-}
-
 /* Main Function */
-
 void main(void)
 {
     Add(1);
-    Add(1);
-    Add(2);
     Add(2);
     Add(3);
-    Add(3);
+    Add(1); //BUG HERE
+    Dis(0);
+    Rev(0);
     Dis(0);
     Del(1);
     Dis(0);
     Del(2);
     Dis(0);
     Del(3);
+    Dis(0);
+    Add(1);
+    Add(2);
+    Dis(0);
+    Rev(0);
     Dis(0);
     return;
 }
@@ -152,4 +110,50 @@ void Add(uint32_t Data)
         TAIL->Next = NULL;
     }
     return;
+}
+
+void Del(uint32_t Data)
+{
+    sNODE *Curr = HEAD;
+    sNODE *Prev = NULL;
+    
+    if(Curr!=NULL && Curr->Data == Data)
+    {
+        HEAD = Curr->Next;
+        free(Curr);
+        return;
+    }
+    
+    while(Curr!=NULL && Curr->Data != Data)
+    {
+        Prev = Curr;
+        Curr = Curr->Next;
+    }
+    
+    if(Curr == NULL)
+    {
+        printf("LINKED LIST IS EMPTY\n");
+        return;
+    }
+    
+    Prev->Next = Curr->Next;
+    free(Curr);
+    return;
+}
+
+void Rev(uint32_t Data)
+{
+  sNODE *Prev = NULL;
+  sNODE *Curr = HEAD;
+  sNODE *Next = NULL;
+  
+  while(Curr!=NULL)
+  {
+    Next = Curr->Next;
+    Curr->Next = Prev;
+    Prev = Curr;
+    Curr = Next;
+  }
+  HEAD = Prev;
+  return;
 }
