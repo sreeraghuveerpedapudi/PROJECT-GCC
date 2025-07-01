@@ -25,31 +25,22 @@
 
 //Example for Preprocessor functionalities
 #include<stdio.h>
-
-<<<<<<< HEAD
 //#define PI 3.147
 
-void main(void)
-{
-=======
-#define PI 3.147
+
 void Arthmetic(int NUM_1,int NUM_2);
 void Bitwise(int NUM_1,int NUM_2);
-int main(void)
+void main(void)
 {
 	/*
->>>>>>> 538e370 (code updated)
+
 	printf("Testing compilation stages\n");
 #ifdef PI
 	printf("PI value is %f\n", PI);
 #else
 	printf("PI is not defined\n");
-#endif
-<<<<<<< HEAD
-		
+#endif	
 }
-=======
-	*/
 	/*
 	int Rad,Result;
 	printf("Enter radius of circle\n");
@@ -71,13 +62,13 @@ int main(void)
 	switch(OPT)
 	{
 		case 1:
-			printf("EnterArthmetic\n");
-			Arthmetic(NUM_1,NUM_2);
-			break;
+			    printf("EnterArthmetic\n");
+				Arthmetic(NUM_1,NUM_2);
+				break;
 			
 		case 2:
-                        Bitwise(NUM_1,NUM_2);
-			break;
+                Bitwise(NUM_1,NUM_2);
+				break;
 			/*
 		case 'l':
                         printf("Multiplication of two numbers:%d\n",NUM_1+NUM_2);
@@ -96,30 +87,30 @@ int main(void)
 		switch(choice)
 		{
 			case 'a' :
-                        printf("Addition of two numbers:%d\n",NUM_1+NUM_2);
-                        break;
-                	case 'b':
-                        printf("Subtraction of two numbers:%d\n",NUM_1+NUM_2);
-                        break;
-                	case 'c':
-                        printf("Multiplication of two numbers:%d\n",NUM_1+NUM_2);
-                        break;
-                	case 'd':
-                        printf("Division of two numbers:%d\n",NUM_1+NUM_2);
-                        break;
-                	default:
-                        break;
+			printf("Addition of two numbers:%d\n",NUM_1+NUM_2);
+			break;
+			case 'b':
+			printf("Subtraction of two numbers:%d\n",NUM_1+NUM_2);
+			break;
+			case 'c':
+			printf("Multiplication of two numbers:%d\n",NUM_1+NUM_2);
+			break;
+			case 'd':
+			printf("Division of two numbers:%d\n",NUM_1+NUM_2);
+			break;
+			default:
+			break;
 		}
 	}
 	void Bitwise(int NUM_1,int NUM_2)
 	{
 		printf("AND Operations:%d\n",NUM_1&NUM_2);
-		 printf("OR Operations:%d\n",NUM_1|NUM_2);
-		  printf("XOR Operations:%d\n",NUM_1^NUM_2);
-		   printf("NOT Operations:%d %d\n",~NUM_1,~NUM_2);
-		    printf("LEFT Operations:%d\n",NUM_1<<NUM_2);
-		     printf("RIGHT Operations:%d\n",NUM_1>>NUM_2);
+		printf("OR Operations:%d\n",NUM_1|NUM_2);
+	    printf("XOR Operations:%d\n",NUM_1^NUM_2);
+		printf("NOT Operations:%d %d\n",~NUM_1,~NUM_2);
+		printf("LEFT Operations:%d\n",NUM_1<<NUM_2);
+	 	printf("RIGHT Operations:%d\n",NUM_1>>NUM_2);
 	}	
 
 
->>>>>>> 538e370 (code updated)
+
