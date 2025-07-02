@@ -30,6 +30,7 @@
 
 void Arthmetic(int NUM_1,int NUM_2);
 void Bitwise(int NUM_1,int NUM_2);
+void logical(int NUM_1,int NUM_2);
 void main(void)
 {
 	/*
@@ -54,7 +55,7 @@ void main(void)
 		printf("Enter your choice\n");
 		printf("1)Arthmetic\n");
 		printf("2)Bitwise\n");
-	//	printf("3)Logical\n");
+		printf("3)Logical\n");
 	        
 		scanf(" %d",&OPT);
 		printf("Enter two numbers\n\n");
@@ -67,14 +68,18 @@ void main(void)
 				break;
 			
 		case 2:
+				printf("Enter Bitwise\n");
                 Bitwise(NUM_1,NUM_2);
 				break;
-			/*
-		case 'l':
-                        printf("Multiplication of two numbers:%d\n",NUM_1+NUM_2);
-                        break;
-			*/
-		
+			
+		case 3:
+				printf("Enter Logical\n");	
+                logical(NUM_1,NUM_2);
+                break;
+			
+		default:
+				printf("Invalid option\n");
+				break;
 	}
 	return 0;
 }
@@ -90,15 +95,16 @@ void main(void)
 			printf("Addition of two numbers:%d\n",NUM_1+NUM_2);
 			break;
 			case 'b':
-			printf("Subtraction of two numbers:%d\n",NUM_1+NUM_2);
+			printf("Subtraction of two numbers:%d\n",NUM_1-NUM_2);
 			break;
 			case 'c':
-			printf("Multiplication of two numbers:%d\n",NUM_1+NUM_2);
+			printf("Multiplication of two numbers:%d\n",NUM_1*NUM_2);
 			break;
 			case 'd':
-			printf("Division of two numbers:%d\n",NUM_1+NUM_2);
+			printf("Division of two numbers:%d\n",NUM_1/NUM_2);
 			break;
 			default:
+			printf("Invalid option\n");
 			break;
 		}
 	}
@@ -111,6 +117,11 @@ void main(void)
 		printf("LEFT Operations:%d\n",NUM_1<<NUM_2);
 	 	printf("RIGHT Operations:%d\n",NUM_1>>NUM_2);
 	}	
-
+	void logical(int NUM_1,int NUM_2)
+	{
+		printf("Logical AND Operations:%d\n",NUM_1&&NUM_2);
+		printf("Logical OR Operations:%d\n",NUM_1||NUM_2);
+		printf("Logical NOT Operations:%d %d\n",!NUM_1,!NUM_2);
+	}
 
 
