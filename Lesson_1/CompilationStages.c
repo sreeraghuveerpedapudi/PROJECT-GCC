@@ -112,7 +112,7 @@ void main(void)
 	{
 		printf("AND Operations:%d\n",NUM_1&NUM_2);
 		printf("OR Operations:%d\n",NUM_1|NUM_2);
-	    printf("XOR Operations:%d\n",NUM_1^NUM_2);
+		printf("XOR Operations:%d\n",NUM_1^NUM_2);
 		printf("NOT Operations:%d %d\n",~NUM_1,~NUM_2);
 		printf("LEFT Operations:%d\n",NUM_1<<NUM_2);
 	 	printf("RIGHT Operations:%d\n",NUM_1>>NUM_2);
