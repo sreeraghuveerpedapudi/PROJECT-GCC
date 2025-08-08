@@ -52,14 +52,16 @@ void main(void)
 	*/
 
 	int NUM_1,NUM_2,OPT;
-		printf("Enter your choice\n");
-		printf("1)Arthmetic\n");
-		printf("2)Bitwise\n");
-		printf("3)Logical\n");
+
+	printf("Enter your choice\n");
+	printf("1)Arthmetic\n");
+	printf("2)Bitwise\n");
+	printf("3)Logical\n");
 	        
-		scanf(" %d",&OPT);
-		printf("Enter two numbers\n\n");
-		scanf("%d %d",&NUM_1,&NUM_2);
+	scanf(" %d",&OPT);
+	printf("Enter two numbers\n\n");
+	scanf("%d %d",&NUM_1,&NUM_2);
+
 	switch(OPT)
 	{
 		case 1:
@@ -81,7 +83,7 @@ void main(void)
 				printf("Invalid option\n");
 				break;
 	}
-	return 0;
+	return;
 }
 	void Arthmetic(int NUM_1,int NUM_2)
 	{
