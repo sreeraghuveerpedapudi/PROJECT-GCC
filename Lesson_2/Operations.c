@@ -3,8 +3,9 @@
 void Arthmetic(int NUM_1,int NUM_2);
 void Bitwise(int NUM_1,int NUM_2);
 void logical(int NUM_1,int NUM_2);
+void Binary(int Num);
 
-void main(void)
+int main(void)
 {
 	int NUM_1,NUM_2,OPT;
 
@@ -17,27 +18,33 @@ void main(void)
 	        
 		scanf(" %d",&OPT);
 
+		  if (OPT == 0) 
+		{
+            printf("Exiting menu\n");
+            break; 
+        }
+
 		switch(OPT)
 		{
 			case 1:
-				printf("EnterArthmetic\n");
-				Arthmetic(NUM_1,NUM_2);
-				break;			
+			printf("EnterArthmetic\n");
+			Arthmetic(NUM_1,NUM_2);
+			break;			
 			case 2:
-				printf("Enter Bitwise\n");
-       				Bitwise(NUM_1,NUM_2);
-				break;				
+			printf("Enter Bitwise\n");
+       		Bitwise(NUM_1,NUM_2);
+			break;				
 			case 3:
-				printf("Enter Logical\n");	
-                		logical(NUM_1,NUM_2);
-                		break;
+			printf("Enter Logical\n");	
+            logical(NUM_1,NUM_2);
+            break;
 			case 0:
-				printf("exit menu\n");
-				return;		
+			printf("Exit menu\n");
+			return;		
 			default:
-				printf("Invalid option\n");
-				break;
-	}
+			printf("Invalid option\n");
+			break;
+	    }
 	}
 	return;
 }
@@ -64,19 +71,33 @@ void main(void)
 			printf("Division of two numbers:%d\n",NUM_1/NUM_2);
 			break;
 			default:
-	      		printf("Invalid option\n");
+		    printf("Invalid option\n");
 		    break;
 		}
 	}
 	void Bitwise(int NUM_1,int NUM_2)
 	{
 		scanf("%d %d",&NUM_1,&NUM_2);
+		printf("Bitwise Operations:\n");
+	    Binary(NUM_1);
+		printf("\n");
+		Binary(NUM_2);
+		printf("\n");
 		printf("AND Operations:%d\n",NUM_1&NUM_2);
-		printf("OR Operations:%d\n",NUM_1|NUM_2);
-		printf("XOR Operations:%d\n",NUM_1^NUM_2);
-		printf("NOT Operations:%d %d\n",~NUM_1,~NUM_2);
-		printf("LEFT Operations:%d\n",NUM_1<<NUM_2);
-	 	printf("RIGHT Operations:%d\n",NUM_1>>NUM_2);
+		Binary(NUM_1&NUM_2);
+		printf("\nOR Operations:%d\n",NUM_1|NUM_2);
+		Binary(NUM_1|NUM_2);
+		printf("\nXOR Operations:%d\n",NUM_1^NUM_2);
+		Binary(NUM_1^NUM_2);
+		printf("\nNOT Operations:%d %d\n",~NUM_1,~NUM_2);
+		Binary(~NUM_1);
+		printf("\n");
+		Binary(~NUM_2);
+		printf("\nLEFT Operations:%d\n",NUM_1<<NUM_2);
+		Binary(NUM_1<<NUM_2);
+	 	printf("\nRIGHT Operations:%d\n",NUM_1>>NUM_2);
+		Binary(NUM_1>>NUM_2);
+		printf("\n");
 	}	
 	void logical(int NUM_1,int NUM_2)
 	{
@@ -86,4 +107,11 @@ void main(void)
 		printf("Logical NOT Operations:%d %d\n",!NUM_1,!NUM_2);
 	}
 
+    void Binary(int Num)
+    {
+    for (int i = 31; i >= 0; i--)  
+    {
+        printf("%d", (Num >> i) & 1);  
+    }
+	}
 
