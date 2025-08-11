@@ -39,7 +39,7 @@ void main(void)
 				break;
 	}
 	}
-
+	return;
 }
 	void Arthmetic(int NUM_1,int NUM_2)
 	{
@@ -64,7 +64,7 @@ void main(void)
 			printf("Division of two numbers:%d\n",NUM_1/NUM_2);
 			break;
 			default:
-		    printf("Invalid option\n");
+	      		printf("Invalid option\n");
 		    break;
 		}
 	}
